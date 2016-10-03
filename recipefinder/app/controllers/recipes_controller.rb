@@ -3,10 +3,8 @@ class RecipesController < ApplicationController
   	# Check if a request parameter search was passed in
 
   	# Use the search term as the keyword if supplied. Use a default value of 'chocolate' if not supplied. 
-  	if !params[:search].nil?
-  	else
-  		params[:search] = "chocolate"
-  end
-  	@recipes = Recipe.for(params[:search])
+  	@search_term = params[:search] || 'chocolate'
+  	@recipes = Recipe.for(@search_term)
+
   end
 end
